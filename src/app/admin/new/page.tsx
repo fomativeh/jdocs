@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 const { dismiss } = toast;
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] = useState<string>("");
   const [newCategory, setNewCategory] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -133,4 +133,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
