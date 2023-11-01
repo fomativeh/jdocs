@@ -6,9 +6,9 @@ import { useContext, useState, useEffect, useCallback } from "react";
 import { AppContext } from "@/globalState/globalState";
 import { fetchAllDocs } from "../api/document"
 import toast, { Toaster } from "react-hot-toast";
-import LoaderAnimate from "../../components/loader/LoaderAnimate";
 import { fetchAllCategories } from ".././api/category";
 import Image from "next/image";
+import LoaderAnimate from "@/components/loader/LoaderAnimate";
 const { dismiss } = toast;
 
 export default function Admin() {
