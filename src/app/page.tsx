@@ -6,8 +6,9 @@ import { useContext, useState, useEffect, useCallback } from "react";
 import { AppContext } from "@/globalState/globalState";
 import { fetchAllDocs } from "./api/document";
 import toast, { Toaster } from "react-hot-toast";
-import LoaderAnimate from "../components/Loader/LoaderAnimate";
+import LoaderAnimate from "../components/loader/LoaderAnimate";
 import { fetchAllCategories } from "./api/category";
+import Image from "next/image";
 const { dismiss } = toast;
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         ...appGlobalState,
         documents: data?.data?.documents,
         categories: data?.data?.categories,
+        currentCategory: data?.data?.categories[0],
       });
     } catch (error) {
       toast.error("Network error. Please retry.");
@@ -40,7 +42,11 @@ export default function Home() {
 
       {!appGlobalState?.isSearching &&
         appGlobalState?.documents?.length > 0 && (
-          <DocList data={appGlobalState.documents} />
+          <DocList
+            data={appGlobalState.documents.filter(
+              (e) => e.category == appGlobalState.currentCategory
+            )}
+          />
         )}
 
       {appGlobalState?.documents?.length == 0 &&
@@ -55,6 +61,21 @@ export default function Home() {
 
       {appGlobalState.isSearching && (
         <DocList data={appGlobalState.queryItems} />
+      )}
+
+      {appGlobalState.isSearching && appGlobalState.queryItems.length == 0 && (
+        <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[-44px]">
+          <figure className="w-[80%] h-[300px] relative mb-[30px]">
+            <Image
+              src={"/assets/images/unavailable.svg"}
+              alt={"Unavailable illustration"}
+              fill
+            />
+          </figure>
+          <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
+            Documents unavailable
+          </span>
+        </section>
       )}
     </main>
   );

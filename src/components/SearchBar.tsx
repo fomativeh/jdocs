@@ -4,10 +4,12 @@ import { AppContext } from "@/globalState/globalState";
 import { useState, useEffect, useContext } from "react";
 const SearchBar = () => {
   const { appGlobalState, setAppGlobalState } = useContext(AppContext);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [query, setQuery] = useState<string>("");
   useEffect(() => {
-    setSelectedCategory(appGlobalState.categories[0]);
+    setAppGlobalState({
+      ...appGlobalState,
+      currentCategory: appGlobalState.categories[0],
+    });
   }, [appGlobalState.categories]);
 
   useEffect(() => {
@@ -15,9 +17,9 @@ const SearchBar = () => {
       setAppGlobalState({
         ...appGlobalState,
         isSearching: true,
-        queryItems: appGlobalState.documents.filter((e) =>
-          e.title.toLowerCase().includes(query.toLowerCase())
-        ),
+        queryItems: appGlobalState.documents
+          .filter((e) => e.category == appGlobalState.currentCategory)
+          .filter((e) => e.title.toLowerCase().includes(query.toLowerCase())),
       });
     } else {
       setAppGlobalState({ ...appGlobalState, isSearching: false });
@@ -49,7 +51,12 @@ const SearchBar = () => {
           name="category"
           id="category"
           className="text-[12px] cursor-pointer text-[#000] max-sm:w-[120px] w-[200px] outline-none h-[60%] rounded-[12px] pl-[10px]"
-          onChange={(e) => setSelectedCategory(e.target.value)}
+          onChange={(e) =>
+            setAppGlobalState({
+              ...appGlobalState,
+              currentCategory: e.target.value,
+            })
+          }
         >
           {appGlobalState?.categories?.length > 0 &&
             appGlobalState?.categories?.map((eachCategory: any, i: number) => {
@@ -64,7 +71,7 @@ const SearchBar = () => {
       </section>
 
       <h1 className="m-0 my-[12px] ml-[20px] text-[#151243] text-[12px] font-bold bg-[#fff] rounded-[14px] px-[14px] py-[7px]">
-        {selectedCategory}
+        {appGlobalState.currentCategory}
       </h1>
     </header>
   );

@@ -1,1 +1,1 @@
-export const SERVER_URL = "http://192.168.96.99:5000"
+export const SERVER_URL = "http://localhost:5000"

@@ -9,6 +9,7 @@ type AppState = {
   categories: string[];
   queryItems: documentType[];
   isSearching: boolean;
+  currentCategory:string
 };
 
 const initialState: AppState = {
@@ -16,6 +17,7 @@ const initialState: AppState = {
   categories: [],
   queryItems: [],
   isSearching: false,
+  currentCategory:""
 };
 
 type AppContextProps = {
