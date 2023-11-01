@@ -37,63 +37,48 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start pt-[75px] bg-[#c5cdec]">
-      <Toaster />
-      <Navbar />
-      <SearchBar />
+    <Toaster />
+    <Navbar />
+    <SearchBar />
 
-      {!appGlobalState?.isSearching &&
-        appGlobalState?.documents?.length > 0 && (
-          <DocList
-            data={appGlobalState.documents.filter(
-              (e) => e.category == appGlobalState.currentCategory
-            )}
-          />
-        )}
-
-      {appGlobalState?.documents?.length == 0 &&
-        appGlobalState.categories.length == 0 &&
-        !appGlobalState.isSearching && (
-          <section className="flex-grow flex  flex-col justify-center items-center w-full bg-[#0b0c3a] z-[99] mt-[-2px]">
-            <span className="mb-[30px] max-w-[80%] text-[19px] text-center font-bolder font-[Poppins]">
-              Loading our documents. Please wait...
-            </span>
-            <LoaderAnimate />
-          </section>
-        )}
-
-      {appGlobalState.isSearching && (
-        <DocList data={appGlobalState.queryItems} />
+    {!appGlobalState?.isSearching &&
+      appGlobalState?.documents?.length > 0 && (
+        <DocList
+          data={appGlobalState.documents.filter(
+            (e) => e.category == appGlobalState.currentCategory
+          )}
+        />
       )}
 
-      {appGlobalState.isSearching && appGlobalState.queryItems.length == 0 && (
-    <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[116px]">
-    <figure className="w-[80%] h-[300px] relative mb-[30px]">
-      <Image
-        src={"/assets/images/unavailable.svg"}
-        alt={"Unavailable illustration"}
-        fill
-      />
-    </figure>
-    <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
-      Documents unavailable
-    </span>
-  </section>
-      )}
-
-      {!appGlobalState.isSearching && appGlobalState.queryItems.length==0 && (
-        <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[16px]">
-          <figure className="w-[80%] h-[300px] relative mb-[30px]">
-            <Image
-              src={"/assets/images/unavailable.svg"}
-              alt={"Unavailable illustration"}
-              fill
-            />
-          </figure>
-          <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
-            Documents unavailable
+    {appGlobalState?.documents?.length == 0 && appGlobalState.categories.length==0 &&
+      !appGlobalState.isSearching && (
+        <section className="flex-grow flex  flex-col justify-center items-center w-full bg-[#0b0c3a] z-[99] mt-[-2px]">
+          <span className="mb-[30px] max-w-[80%] text-[19px] text-center font-bolder font-[Poppins]">
+            Loading our documents. Please wait...
           </span>
+          <LoaderAnimate />
         </section>
       )}
+
+    {appGlobalState.isSearching && (
+      <DocList data={appGlobalState.queryItems} />
+    )}
+
+    {appGlobalState.isSearching && appGlobalState.queryItems.length == 0 && (
+      <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[-44px]">
+        <figure className="w-[80%] h-[300px] relative mb-[30px]">
+          <Image
+            src={"/assets/images/unavailable.svg"}
+            alt={"Unavailable illustration"}
+            fill
+          />
+        </figure>
+        <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
+          Document unavailable
+        </span>
+      </section>
+    )}
+
     </main>
   );
 }

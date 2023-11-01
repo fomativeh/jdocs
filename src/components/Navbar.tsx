@@ -14,16 +14,20 @@ const Navbar = () => {
         </figure>
       </Link>
 
-      {isAdminRoute ? (
-        <Link href={"/admin/new"}>
-          <span className="max-sm:px-[14px] px-[30px] py-[12px] max-sm:text-[14px] max-sm:py-[10px] rounded-[14px] cursor-pointer bg-[#4130c3] text-[#fff]">
-            Add document
-          </span>
-        </Link>
-      ) : (
-        <span className="max-sm:px-[14px] px-[30px] py-[12px] max-sm:text-[14px] max-sm:py-[10px] rounded-[14px] cursor-pointer bg-[#4130c3] text-[#fff]">
-          Contact us
-        </span>
+      {!pathname.includes("new") && (
+        <>
+          {isAdminRoute ? (
+            <Link href={"/admin/new"}>
+              <span className="max-sm:px-[14px] px-[20px] py-[11px] max-sm:text-[14px] max-sm:py-[10px] rounded-[8px] cursor-pointer bg-[#4130c3] text-[#fff]">
+                Add document
+              </span>
+            </Link>
+          ) : (
+            <span className="max-sm:px-[14px] px-[20px] py-[11px] max-sm:text-[14px] max-sm:py-[10px] rounded-[8px] cursor-pointer bg-[#4130c3] text-[#fff]">
+              Contact us
+            </span>
+          )}
+        </>
       )}
     </nav>
   );

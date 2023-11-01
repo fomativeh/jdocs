@@ -29,7 +29,7 @@ const SearchBar = () => {
   return (
     <header className="z-[9] w-full flex flex-col justify-start items-start fixed top-[75px] left-0 bg-[#1f1259]">
       <section className="max-sm:px-[20px] bg-[#4694cb] w-full h-[65px] flex justify-center items-center">
-        <section className="h-[60%] max-sm:w-[85%] w-[300px] relative mr-[20px]">
+        <section className="h-[60%] max-sm:w-[85%] w-[350px] relative mr-[20px]">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}

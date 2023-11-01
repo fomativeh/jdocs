@@ -58,11 +58,11 @@ const Page = () => {
       <Toaster />
       <form
         onSubmit={handleSubmit}
-        className="w-full max-sm:w-[95vw] sm:w-[400px] flex flex-col justify-start items-center mt-[40px] bg-[#151243d5] max-sm:px-[15px] px-[35px] py-[30px] rounded-[20px]"
+        className="w-full max-sm:w-[95vw] sm:w-[400px] flex flex-col justify-start items-center mt-[40px] bg-[#16174d] max-sm:px-[15px] px-[35px] py-[30px] rounded-[10px]"
       >
         <section className="w-[95%] flex flex-col justify-start items-start mb-[30px]">
           <label
-            className="mb-[14px] font-semibold text-[20px]"
+            className="mb-[14px] font-normal text-[20px]"
             htmlFor="title"
           >
             Document title
@@ -79,7 +79,7 @@ const Page = () => {
         {newCategory == "" && (
           <section className="w-[95%] flex flex-col justify-start items-start mb-[30px]">
             <label
-              className="mb-[14px] font-semibold text-[20px]"
+              className="mb-[14px] font-normal text-[20px]"
               htmlFor="title"
             >
               Category
@@ -107,7 +107,7 @@ const Page = () => {
         {selectedCategory == "" && (
           <section className="w-[95%] flex flex-col justify-start items-start mb-[25px]">
             <label
-              className="mb-[14px] font-semibold text-[20px]"
+              className="mb-[14px] font-normal text-[20px]"
               htmlFor="newCategory"
             >
               New Category
@@ -117,14 +117,14 @@ const Page = () => {
               onChange={(e) => setNewCategory(e.target.value)}
               name="newCategory"
               id="newCategory"
-              className="text-[#000] pl-[10px] outline-none w-full h-[50px] rounded-[12px]"
+              className="text-[#000] pl-[10px] outline-none w-full h-[40px] rounded-[10px]"
             />
           </section>
         )}
 
         <button
           type="submit"
-          className="border-[none] w-[95%] h-[40px] rounded-[15px] text-[#fff] bg-[#4130c3]"
+          className="border-[none] w-[95%] h-[40px] rounded-[15px] text-[#fff] bg-[#385ebc]"
         >
           Submit
         </button>

@@ -48,7 +48,7 @@ export default function Admin() {
         />
       )}
 
-    {appGlobalState?.documents?.length == 0 &&
+    {appGlobalState?.documents?.length == 0 && appGlobalState.categories.length==0 &&
       !appGlobalState.isSearching && (
         <section className="flex-grow flex  flex-col justify-center items-center w-full bg-[#0b0c3a] z-[99] mt-[-2px]">
           <span className="mb-[30px] max-w-[80%] text-[19px] text-center font-bolder font-[Poppins]">
@@ -72,7 +72,7 @@ export default function Admin() {
           />
         </figure>
         <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
-          Documents unavailable
+          Document unavailable
         </span>
       </section>
     )}
