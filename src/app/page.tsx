@@ -8,8 +8,27 @@ import { fetchAllDocs } from "./api/document";
 import toast, { Toaster } from "react-hot-toast";
 import { fetchAllCategories } from "./api/category";
 import Image from "next/image";
-import LoaderAnimate from "@/components/loader/LoaderAnimate";
+// import LoaderAnimate from "@/components/loader/LoaderAnimate";
 const { dismiss } = toast;
+
+const LoaderAnimate = () => {
+  return (
+    <div className="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 
 export default function Home() {
   const { appGlobalState, setAppGlobalState } = useContext(AppContext);
