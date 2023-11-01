@@ -43,7 +43,6 @@ export default function Home() {
         categories: data?.data?.categories,
         currentCategory: data?.data?.categories[0],
       });
-      console.log(data.data);
     } catch (error) {
       toast.error("Network error. Please retry.");
       console.log(error);

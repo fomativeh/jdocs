@@ -20,6 +20,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
           rel="stylesheet"
         />
+        <meta name="description" content="Schoolresourceacademy"/>
+        <title>School Resource Academy</title>
       </head>
       <AppContextProvider>
         <body className={inter.className}>{children}</body>
