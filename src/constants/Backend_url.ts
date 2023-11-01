@@ -1,1 +1,1 @@
-export const SERVER_URL = "https://jdocs-production.up.railway.app/"
+export const SERVER_URL = "https://jdocs-production.up.railway.app"

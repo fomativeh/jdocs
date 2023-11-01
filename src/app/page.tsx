@@ -24,6 +24,7 @@ export default function Home() {
         categories: data?.data?.categories,
         currentCategory: data?.data?.categories[0],
       });
+      console.log(data.data);
     } catch (error) {
       toast.error("Network error. Please retry.");
       console.log(error);
@@ -50,6 +51,7 @@ export default function Home() {
         )}
 
       {appGlobalState?.documents?.length == 0 &&
+        appGlobalState.categories.length == 0 &&
         !appGlobalState.isSearching && (
           <section className="flex-grow flex  flex-col justify-center items-center w-full bg-[#0b0c3a] z-[99] mt-[-2px]">
             <span className="mb-[30px] max-w-[80%] text-[19px] text-center font-bolder font-[Poppins]">
@@ -64,7 +66,22 @@ export default function Home() {
       )}
 
       {appGlobalState.isSearching && appGlobalState.queryItems.length == 0 && (
-        <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[-44px]">
+    <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[116px]">
+    <figure className="w-[80%] h-[300px] relative mb-[30px]">
+      <Image
+        src={"/assets/images/unavailable.svg"}
+        alt={"Unavailable illustration"}
+        fill
+      />
+    </figure>
+    <span className="mb-[30px] max-w-[80%] text-[19px] text-center text-[#000] font-bolder font-[Poppins]">
+      Documents unavailable
+    </span>
+  </section>
+      )}
+
+      {!appGlobalState.isSearching && appGlobalState.queryItems.length==0 && (
+        <section className=" flex-grow flex flex-col justify-center items-center w-full bg-[#ffffff] z-[99] mt-[16px]">
           <figure className="w-[80%] h-[300px] relative mb-[30px]">
             <Image
               src={"/assets/images/unavailable.svg"}

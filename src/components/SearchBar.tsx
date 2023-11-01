@@ -6,11 +6,11 @@ const SearchBar = () => {
   const { appGlobalState, setAppGlobalState } = useContext(AppContext);
   const [query, setQuery] = useState<string>("");
   useEffect(() => {
-    setAppGlobalState({
-      ...appGlobalState,
-      currentCategory: appGlobalState.categories[0],
-    });
-  }, [appGlobalState.categories]);
+      setAppGlobalState({
+        ...appGlobalState,
+        currentCategory: appGlobalState?.categories[0],
+      });
+  }, [appGlobalState?.categories]);
 
   useEffect(() => {
     if (query !== "") {
